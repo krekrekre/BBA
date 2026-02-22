@@ -15,20 +15,25 @@ export function ReviewsFilter() {
   ];
 
   return (
-    <div className="flex flex-wrap gap-2">
-      {options.map((opt) => (
-        <Link
-          key={opt.value}
-          href={opt.value ? `/utisci?rating=${opt.value}` : "/utisci"}
-          className={`px-4 py-2 rounded-lg transition-colors ${
-            (opt.value && currentRating === opt.value) || (!opt.value && !currentRating)
-              ? "bg-primary text-white"
-              : "bg-bg-light hover:bg-accent/30"
-          }`}
-        >
-          {opt.label}
-        </Link>
-      ))}
+    <div className="flex flex-wrap justify-center sm:justify-start gap-3">
+      {options.map((opt) => {
+        const isActive =
+          (opt.value && currentRating === opt.value) ||
+          (!opt.value && !currentRating);
+        return (
+          <Link
+            key={opt.value}
+            href={opt.value ? `/utisci?rating=${opt.value}` : "/utisci"}
+            className={`px-5 py-2.5 rounded-lg font-medium transition-all duration-200 ${
+              isActive
+                ? "bg-brand text-cream shadow-sm"
+                : "bg-bg-light border border-accent/30 text-text-dark hover:bg-accent/30 hover:border-secondary/30"
+            }`}
+          >
+            {opt.label}
+          </Link>
+        );
+      })}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Review } from "@/lib/types/database";
 
 interface AdminReviewsListProps {
@@ -20,6 +20,13 @@ function StarRating({ rating }: { rating: number }) {
 export function AdminReviewsList({ reviews }: AdminReviewsListProps) {
   const [items, setItems] = useState(reviews);
   const [deleting, setDeleting] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/reviews", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => setItems(Array.isArray(data) ? data : []))
+      .catch(() => {});
+  }, []);
 
   async function handleDelete(id: string, author: string) {
     if (!confirm(`Da li ste sigurni da želite obrisati utisak od "${author}"?`))

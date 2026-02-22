@@ -228,6 +228,33 @@ Summary of implementation work for the Beauty Salon website (Serbian market, SEO
 
 **Sitemap**: Service URLs added dynamically from DB
 
+### Pre-Vercel Deployment Updates (Feb 2025)
+
+**Mobile layout (100% width)**:
+- Single service page (`/usluge/[category]/[slug]`): Full width on mobile, rounded corners and padding from sm up
+- Single blog page (`/blog/[slug]`): Same full-width mobile layout
+
+**Blog**:
+- Share block ("Podeli ovaj članak" + ShareButtons) moved inside article element
+- Related articles card only renders when related posts exist
+
+**Header**:
+- CTA button "Zakažite termin": Pill style, calendar icon, shadow, hover lift effect
+
+**Homepage**:
+- Mobile title font size: 55px (was 52px)
+
+**Footer**:
+- Instagram link: https://www.instagram.com/_beauty_by_aysha
+- Contact: aidastanimirov@gmail.com, 064/1789158
+
+**Utisci (reviews) page**:
+- Filter buttons: Centered on mobile, single line (flex-nowrap) with overflow-x-auto
+
+**Admin panel**:
+- AdminServiceList, AdminBlogList, AdminReviewsList: Fetch data from API on mount instead of server props
+- New blog posts, services, and reviews appear in list without hard refresh
+
 ---
 
 ## Tech Stack

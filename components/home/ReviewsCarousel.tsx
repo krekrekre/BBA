@@ -28,7 +28,7 @@ export async function ReviewsCarousel() {
 
   if (!reviews || reviews.length === 0) {
     return (
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-bg-light">
         <div className="container mx-auto px-4">
           <h2 className="font-serif text-3xl lg:text-4xl font-bold text-text-dark text-center mb-12">
             Utisci gostiju

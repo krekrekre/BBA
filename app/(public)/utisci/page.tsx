@@ -16,14 +16,31 @@ export default async function UtisciPage({
   const ratingFilter = rating ? parseInt(rating, 10) : undefined;
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="font-serif text-4xl font-bold text-text-dark mb-4">
-        Utisci gostiju
-      </h1>
-      <p className="text-text-dark/80 mb-12 max-w-2xl">
-        Šta kažu naši zadovoljni gosti o uslugama u našem salonu
-      </p>
-      <ReviewsList ratingFilter={ratingFilter} />
+    <div>
+      {/* Hero section */}
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-white via-bg-light to-accent/20">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-brand font-medium text-sm uppercase tracking-wide mb-2">
+            ZADOVOLJNI GOSTI
+          </p>
+          <h1 className="font-serif text-4xl lg:text-5xl font-bold text-text-dark mb-4">
+            Utisci gostiju
+          </h1>
+          <p className="text-text-dark/80 max-w-2xl mx-auto text-lg">
+            Šta kažu naši zadovoljni gosti o uslugama u našem salonu
+          </p>
+          <div className="flex justify-center mt-6">
+            <div className="w-16 h-1 rounded-full bg-secondary" />
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews section */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <ReviewsList ratingFilter={ratingFilter} />
+        </div>
+      </section>
     </div>
   );
 }

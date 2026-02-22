@@ -28,10 +28,14 @@ export function ContactForm() {
     }
   }
 
+  const inputStyles =
+    "w-full px-4 py-3 rounded-lg border border-accent/50 bg-bg-light/50 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all placeholder:text-text-dark/40";
+  const labelStyles = "block text-sm font-medium text-text-dark mb-2";
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-text-dark mb-2">
+        <label htmlFor="name" className={labelStyles}>
           Ime i prezime
         </label>
         <input
@@ -39,13 +43,13 @@ export function ContactForm() {
           name="name"
           type="text"
           required
-          className="w-full px-4 py-2 rounded-lg border border-accent/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+          className={inputStyles}
           placeholder="Vaše ime"
           disabled={status === "loading"}
         />
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-text-dark mb-2">
+        <label htmlFor="email" className={labelStyles}>
           Email
         </label>
         <input
@@ -53,26 +57,26 @@ export function ContactForm() {
           name="email"
           type="email"
           required
-          className="w-full px-4 py-2 rounded-lg border border-accent/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+          className={inputStyles}
           placeholder="vas@email.com"
           disabled={status === "loading"}
         />
       </div>
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-text-dark mb-2">
+        <label htmlFor="phone" className={labelStyles}>
           Telefon
         </label>
         <input
           id="phone"
           name="phone"
           type="tel"
-          className="w-full px-4 py-2 rounded-lg border border-accent/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+          className={inputStyles}
           placeholder="+381..."
           disabled={status === "loading"}
         />
       </div>
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-text-dark mb-2">
+        <label htmlFor="message" className={labelStyles}>
           Poruka
         </label>
         <textarea
@@ -80,7 +84,7 @@ export function ContactForm() {
           name="message"
           rows={4}
           required
-          className="w-full px-4 py-2 rounded-lg border border-accent/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none"
+          className={`${inputStyles} resize-none`}
           placeholder="Vaša poruka..."
           disabled={status === "loading"}
         />
@@ -97,7 +101,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-brand text-cream py-3.5 rounded-lg font-medium hover:bg-brand/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed uppercase text-sm tracking-wide mt-6"
       >
         {status === "loading" ? "Šaljem..." : "Pošalji poruku"}
       </button>

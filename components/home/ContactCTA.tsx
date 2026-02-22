@@ -18,12 +18,11 @@ export function ContactCTA() {
           >
             Kontakt forma
           </Link>
-          <a
-            href="tel:+381111234567"
-            className="inline-block border-2 border-cream px-8 py-3 rounded-lg hover:bg-cream/10 transition-colors font-medium text-cream"
+          <span
+            className="inline-block border-2 border-cream px-8 py-3 rounded-lg font-medium text-cream cursor-default"
           >
             +381 11 123 4567
-          </a>
+          </span>
         </div>
       </div>
     </section>

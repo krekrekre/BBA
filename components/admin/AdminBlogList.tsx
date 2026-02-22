@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { BlogPost } from "@/lib/types/database";
 
 interface AdminBlogListProps {
@@ -11,6 +11,13 @@ interface AdminBlogListProps {
 export function AdminBlogList({ posts }: AdminBlogListProps) {
   const [items, setItems] = useState(posts);
   const [deleting, setDeleting] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/blog", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => setItems(Array.isArray(data) ? data : []))
+      .catch(() => {});
+  }, []);
 
   async function handleDelete(id: string, title: string) {
     if (!confirm(`Da li ste sigurni da želite obrisati "${title}"?`)) return;

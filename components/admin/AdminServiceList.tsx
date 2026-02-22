@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Service } from "@/lib/types/database";
 
 interface AdminServiceListProps {
@@ -19,6 +19,13 @@ export function AdminServiceList({ services }: AdminServiceListProps) {
   const [items, setItems] = useState(services);
   const [deleting, setDeleting] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>("");
+
+  useEffect(() => {
+    fetch("/api/services", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => setItems(Array.isArray(data) ? data : []))
+      .catch(() => {});
+  }, []);
 
   const filtered = filter
     ? items.filter((s) => s.category === filter)
