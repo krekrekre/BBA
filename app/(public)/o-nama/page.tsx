@@ -17,7 +17,7 @@ export default function ONamaPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
           <Image
-            src="/images/aida.jpg"
+            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80"
             alt="Salon Lepote"
             fill
             className="object-cover"
@@ -26,7 +26,7 @@ export default function ONamaPage() {
         </div>
         <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg">
           <Image
-            src="/images/aida1.jpg"
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80"
             alt="Salon Lepote"
             fill
             className="object-cover"

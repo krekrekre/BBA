@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/images/favicon.jpg",
+    icon: "/images/logo.png",
   },
 };
 

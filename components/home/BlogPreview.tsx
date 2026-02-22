@@ -85,7 +85,7 @@ export async function BlogPreview() {
         <div className="text-center mt-10">
           <Link
             href="/blog"
-            className="inline-block bg-secondary text-white px-6 py-2 rounded-lg hover:bg-secondary/90 transition-colors"
+            className="inline-block bg-[rgb(99_51_58/0.9)] text-white px-6 py-2 rounded-lg hover:bg-[rgb(99_51_58)] transition-colors"
           >
             Svi postovi
           </Link>

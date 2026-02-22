@@ -9,8 +9,8 @@ export default function HomePage() {
     <>
       <HeroSection />
       <ServiceCategoryCards />
-      <BlogPreview />
       <ReviewsCarousel />
+      <BlogPreview />
       <ContactCTA />
     </>
   );

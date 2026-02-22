@@ -41,7 +41,7 @@ Summary of implementation work for the Beauty Salon website (Serbian market, SEO
 
 ## Phase 4: Layout Components
 
-- **Header** – navigation (Početna, Usluge, Blog, O nama, Kontakt, Utisci), logo, mobile hamburger menu
+- **Header** – navigation (Početna, Usluge, O nama, Kontakt), logo only, phone + CTA, mobile hamburger menu
 - **Footer** – contact info, working hours, navigation, social links
 - **Public layout** – `app/(public)/layout.tsx` with Header and Footer
 - **Admin layout** – `app/admin/(dashboard)/layout.tsx` with sidebar and logout
@@ -51,10 +51,10 @@ Summary of implementation work for the Beauty Salon website (Serbian market, SEO
 
 ## Phase 5: Homepage
 
-- **Hero** – title, tagline, CTA buttons, background image
-- **Service category cards** – 3 cards linking to tretmani-lica, epilacija, depilacija
+- **Hero** – badge, title, tagline, CTA buttons, Unsplash stock background
+- **Service category cards** – 3 image-overlay cards (EKSKLUZIVNA NEGA), link to tretmani-lica, epilacija, depilacija
+- **Reviews carousel** – published reviews (before blog)
 - **Blog preview** – latest 3 published posts
-- **Reviews carousel** – published reviews
 - **Contact CTA** – contact link and phone
 
 ---
@@ -151,6 +151,50 @@ Summary of implementation work for the Beauty Salon website (Serbian market, SEO
 - **Favicon**: `favicon.jpg` set in layout metadata
 - **About page**: `aida.jpg` and `aida1.jpg` added as two-column image section
 
+### Design & UI Overhaul (2025)
+
+**Color palette**: #63333a, #986369, #ffe3e8 (primary, secondary, accent, cream, brand, text-dark, bg-light)
+
+**Container**: Narrower max-widths – lg 960px, xl 1080px, 2xl 1152px
+
+**Header**:
+- Logo only (no text), 4 nav links: Početna, Usluge, O nama, Kontakt
+- Phone + "Pozovite nas" CTA on right
+- Desktop: nav links grouped with logo on left; phone/CTA on right via `ml-auto`
+- Mobile: burger menu with smooth transition (max-height, opacity)
+- Smaller header height (h-12 lg:h-14)
+
+**Hero section**:
+- 75vh min-height, Unsplash stock background
+- Neutral black overlay (no red tint)
+- Badge "DOBRODOŠLI U OAZU MIRA" (hidden on mobile)
+- Heading "Vaša oaza lepote i mira", cream text
+- CTAs: Zakažite termin, Naše usluge
+- Mobile: content lower (justify-end), responsive text/button sizes, full-width buttons
+- Scroll indicator (double chevron)
+
+**Service cards** ("Naše Usluge"):
+- Image-only cards with dark gradient overlay at bottom
+- Title + "SAZNAJTE VIŠE →" on overlay
+- "EKSKLUZIVNA NEGA" subheading, secondary underline
+- Stock images from Unsplash
+
+**Homepage section order**: Hero → Services → Reviews → Blog → Contact CTA
+
+**Images**:
+- Logo and favicon: `/images/logo.png`
+- Hero, service cards, about page: Unsplash stock images
+- Blog posts: picsum.photos (seed script)
+- `next.config.mjs`: remotePatterns for picsum.photos, images.unsplash.com
+
+**Seed scripts** (`package.json`):
+- `npm run seed:blog` – 6 mock Serbian blog posts (picsum.photos images)
+- `npm run seed:reviews` – 10 mock reviews (replaces existing mocks on re-run)
+
+**Other**:
+- "Svi postovi" button: `rgb(99 51 58 / 0.9)`
+- Phase 4 Header: reduced to 4 nav links (removed Blog, Utisci from main nav)
+
 ---
 
 ## Tech Stack
@@ -195,11 +239,11 @@ d:\BBA\
 │   ├── forms/             # ContactForm
 │   └── admin/             # AdminLoginForm, BlogPostForm, ReviewForm, etc.
 ├── lib/                   # supabase, types, validations, utils, auth
-├── public/images/         # Static images (logo, features, bg, aida)
+├── public/images/         # Logo (features/bg/about use Unsplash)
 ├── supabase/migrations/   # 001_initial_schema.sql
-└── scripts/seed-admin.ts
+└── scripts/               # seed-admin.ts, seed-blog.ts, seed-reviews.ts
 ```
 
 ---
 
-*Last updated: 2025*
+*Last updated: Feb 2025*

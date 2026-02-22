@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed:blog": "npx tsx scripts/seed-blog.ts",
+    "seed:admin": "npx tsx scripts/seed-admin.ts",
+    "seed:reviews": "npx tsx scripts/seed-reviews.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
