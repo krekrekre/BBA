@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: service.meta_title ?? `${service.title_rs} | Salon Lepote`,
+    title: service.meta_title ?? `${service.title_rs} | Beauty by Aysha`,
     description:
       service.meta_description ?? service.description_rs ?? undefined,
   };

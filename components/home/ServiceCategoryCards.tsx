@@ -44,7 +44,7 @@ export function ServiceCategoryCards() {
             <Link
               key={cat.slug}
               href={cat.href}
-              className="group block rounded-xl overflow-hidden aspect-[4/5] relative"
+              className="group block rounded-xl overflow-hidden aspect-[4/5] relative shadow-xl"
             >
               <Image
                 src={cat.image}

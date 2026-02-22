@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "O nama",
   description:
-    "Upoznajte naš salon lepote - tim stručnjaka sa dugogodišnjom tradicijom u kozmetici.",
+    "Upoznajte Beauty by Aysha - tim stručnjaka sa dugogodišnjom tradicijom u kozmetici.",
 };
 
 export default function ONamaPage() {
@@ -19,7 +19,7 @@ export default function ONamaPage() {
             <div className="relative aspect-[3/4] max-h-[500px] lg:max-h-[600px] rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1">
               <Image
                 src="/images/aida.jpg"
-                alt="Salon Lepote – profesionalna nega"
+                alt="Beauty by Aysha – profesionalna nega"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -67,7 +67,7 @@ export default function ONamaPage() {
 
           <div className="max-w-3xl mx-auto space-y-6 text-text-dark/90 leading-relaxed text-center">
             <p>
-              Salon Lepote je osnovan sa ciljem da našim gostima pružimo
+              Beauty by Aysha je osnovan sa ciljem da našim gostima pružimo
               najbolju negu i opuštanje. Sa dugogodišnjom tradicijom u svetu
               kozmetike, trudimo se da svaki dolazak u naš salon bude poseban
               doživljaj.

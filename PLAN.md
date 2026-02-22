@@ -329,7 +329,7 @@ beauty-salon-website/
 
 ### Primary Keywords
 
-- "salon lepote [grad]"
+- "beauty by aysha [grad]"
 - "tretmani lica [grad]"
 - "epilacija [grad]"
 - "depilacija [grad]"

@@ -24,7 +24,7 @@ export function ServiceSchema({
     url: `${BASE_URL}/usluge/${category}/${slug}`,
     provider: {
       "@type": "LocalBusiness",
-      name: "Salon Lepote",
+      name: "Beauty by Aysha",
     },
   };
 

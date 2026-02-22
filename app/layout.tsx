@@ -20,8 +20,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://salonlepote.rs";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Salon lepote | Tretmani lica, Epilacija, Depilacija",
-    template: "%s | Salon lepote",
+    default: "Beauty by Aysha | Tretmani lica, Epilacija, Depilacija",
+    template: "%s | Beauty by Aysha",
   },
   description:
     "Profesionalni kozmetički salon - tretmani lica, epilacija i depilacija. Rezervišite svoj termin danas.",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "sr_RS",
     url: BASE_URL,
-    siteName: "Salon Lepote",
+    siteName: "Beauty by Aysha",
   },
   robots: {
     index: true,

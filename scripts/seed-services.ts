@@ -296,7 +296,7 @@ async function seed() {
       slug: service.slug,
       description_rs: service.description_rs ?? null,
       content_rs: contentFinal,
-      meta_title: service.meta_title ?? `${service.title_rs} | Salon Lepote`,
+      meta_title: service.meta_title ?? `${service.title_rs} | Beauty by Aysha`,
       meta_description: metaDesc,
       price_range: service.price_range ?? null,
       duration: service.duration ?? null,
