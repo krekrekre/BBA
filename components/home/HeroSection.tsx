@@ -30,7 +30,7 @@ export function HeroSection() {
           </h1>
 
           {/* Description */}
-          <p className="text-cream/95 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-1 sm:px-0">
+          <p className="text-cream/95 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-1 sm:px-0 ">
             Vrhunski tretmani lica, epilacija i depilacija u srcu Beograda.
             Otkrijte lepotu koju zaslužujete uz stručni tim profesionalaca.
           </p>

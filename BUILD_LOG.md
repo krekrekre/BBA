@@ -61,9 +61,12 @@ Summary of implementation work for the Beauty Salon website (Serbian market, SEO
 
 ## Phase 6: Service Pages
 
-- **`/usluge`** – overview of service categories
-- **`/usluge/tretmani-lica`**, **`/usluge/epilacija`**, **`/usluge/depilacija`** – category pages fetching services from Supabase
-- Services shown with images, descriptions, price ranges, durations
+- **`/usluge`** – overview of service categories with white cards, primary title bar, arrow CTA
+- **`/usluge/[category]`** – dynamic category pages (tretmani-lica, epilacija, depilacija) fetching services from Supabase
+- **`/usluge/[category]/[slug]`** – individual service detail pages with breadcrumbs, meta, Service schema, CTA
+- Migration **002_add_service_slug_content.sql** – adds slug, content_rs, meta_title, meta_description to services
+- **`npm run seed:services`** – seeds 42 services across 3 categories with slugs and placeholder content
+- Services shown with images, descriptions, price ranges, durations; white card background
 
 ---
 
@@ -117,6 +120,16 @@ Summary of implementation work for the Beauty Salon website (Serbian market, SEO
 - **`/admin/utisci/nova`** – add review (author, rating, content, service, mock/publish)
 - **`/admin/utisci/[id]`** – edit review
 - **API** – GET/POST `/api/reviews`, GET/PUT/DELETE `/api/reviews/[id]`
+
+---
+
+## Phase 15: Service Management (Admin)
+
+- **`/admin/usluge`** – list of services with category filter
+- **`/admin/usluge/nova`** – add service (category, title, slug, description, content HTML, image, price, duration, meta)
+- **`/admin/usluge/[id]`** – edit service
+- **API** – GET/POST `/api/services`, GET/PUT/DELETE `/api/services/[id]`
+- Image upload via existing `/api/upload` (blog-images bucket)
 
 ---
 
@@ -195,6 +208,26 @@ Summary of implementation work for the Beauty Salon website (Serbian market, SEO
 - "Svi postovi" button: `rgb(99 51 58 / 0.9)`
 - Phase 4 Header: reduced to 4 nav links (removed Blog, Utisci from main nav)
 
+### Services & UI Updates (Feb 2025)
+
+**Usluge page**:
+- Cards with primary-colored title bar, white background, arrow CTA bottom right
+- Larger titles (text-3xl lg:text-4xl), flex layout for button positioning
+
+**Usluge category pages** (tretmani-lica, epilacija, depilacija):
+- White card background, shadow-sm, same styling as /usluge cards
+
+**Individual service pages** (`/usluge/[category]/[slug]`):
+- Breadcrumbs, Service JSON-LD schema, ContactCTA at bottom
+- Fix: separate slug/id queries instead of `.or()` for PostgREST hyphen handling
+
+**Homepage**:
+- "Sve usluge" button below service category cards (links to /usluge)
+- Hero paragraph: text-start alignment
+- Main layout: `bg-bg-light` applied to all public pages
+
+**Sitemap**: Service URLs added dynamically from DB
+
 ---
 
 ## Tech Stack
@@ -219,7 +252,7 @@ d:\BBA\
 │   ├── (public)/          # Public pages with Header/Footer
 │   │   ├── page.tsx       # Homepage
 │   │   ├── o-nama/        # About
-│   │   ├── usluge/        # Services overview + category pages
+│   │   ├── usluge/        # Services overview + [category] + [category]/[slug]
 │   │   ├── blog/          # Blog list + [slug]
 │   │   ├── kontakt/       # Contact
 │   │   └── utisci/        # Reviews
@@ -227,9 +260,10 @@ d:\BBA\
 │   │   ├── login/         # Admin login
 │   │   └── (dashboard)/   # Protected admin area
 │   │       ├── dashboard/
+│   │       ├── usluge/    # Service management
 │   │       ├── blog/      # Blog management
 │   │       └── utisci/    # Review management
-│   ├── api/               # Auth, blog, reviews, upload
+│   ├── api/               # Auth, blog, reviews, services, upload
 │   ├── sitemap.ts
 │   └── robots.ts
 ├── components/
@@ -237,11 +271,12 @@ d:\BBA\
 │   ├── home/              # Hero, ServiceCategoryCards, BlogPreview, etc.
 │   ├── blog/              # ShareButtons, ReviewsList, ReviewsFilter
 │   ├── forms/             # ContactForm
-│   └── admin/             # AdminLoginForm, BlogPostForm, ReviewForm, etc.
+│   ├── usluge/            # ServiceSchema
+│   └── admin/             # AdminLoginForm, BlogPostForm, ReviewForm, ServiceForm, etc.
 ├── lib/                   # supabase, types, validations, utils, auth
 ├── public/images/         # Logo (features/bg/about use Unsplash)
-├── supabase/migrations/   # 001_initial_schema.sql
-└── scripts/               # seed-admin.ts, seed-blog.ts, seed-reviews.ts
+├── supabase/migrations/   # 001_initial_schema.sql, 002_add_service_slug_content.sql
+└── scripts/               # seed-admin.ts, seed-blog.ts, seed-reviews.ts, seed-services.ts
 ```
 
 ---

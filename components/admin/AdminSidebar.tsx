@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const navItems = [
   { href: "/admin/dashboard", label: "Kontrolna tabla" },
+  { href: "/admin/usluge", label: "Usluge" },
   { href: "/admin/blog", label: "Blog" },
   { href: "/admin/utisci", label: "Utisci" },
 ];

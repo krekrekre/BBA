@@ -36,7 +36,7 @@ export function ServiceCategoryCards() {
           <div className="w-16 h-1 rounded-full bg-secondary" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-10">
           {categories.map((cat) => (
             <Link
               key={cat.slug}
@@ -62,6 +62,27 @@ export function ServiceCategoryCards() {
               </div>
             </Link>
           ))}
+        </div>
+        <div className="text-center">
+          <Link
+            href="/usluge"
+            className="inline-flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-primary/90 transition-colors font-medium"
+          >
+            Sve usluge
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

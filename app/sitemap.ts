@@ -18,6 +18,21 @@ async function getBlogPosts(): Promise<{ slug: string; updated_at: string | null
   }
 }
 
+async function getServices(): Promise<{ category: string; slug: string; updated_at: string | null }[]> {
+  try {
+    const { createAdminClient } = await import("@/lib/supabase/admin");
+    const supabase = createAdminClient();
+    const { data } = await supabase
+      .from("services")
+      .select("category, slug, updated_at")
+      .eq("is_active", true)
+      .not("slug", "is", null);
+    return data ?? [];
+  } catch {
+    return [];
+  }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
@@ -31,7 +46,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/utisci`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
   ];
 
-  const posts = await getBlogPosts();
+  const [posts, services] = await Promise.all([
+    getBlogPosts(),
+    getServices(),
+  ]);
+
   const blogUrls: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: post.updated_at ? new Date(post.updated_at) : new Date(),
@@ -39,5 +58,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogUrls];
+  const serviceUrls: MetadataRoute.Sitemap = services.map((s) => ({
+    url: `${BASE_URL}/usluge/${s.category}/${s.slug}`,
+    lastModified: s.updated_at ? new Date(s.updated_at) : new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticPages, ...serviceUrls, ...blogUrls];
 }

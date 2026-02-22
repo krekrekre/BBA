@@ -11,11 +11,15 @@ export interface AdminUser {
 export interface Service {
   id: string;
   category: ServiceCategory;
+  slug: string | null;
   title_rs: string;
   description_rs: string | null;
+  content_rs: string | null;
   price_range: string | null;
   duration: string | null;
   image_url: string | null;
+  meta_title: string | null;
+  meta_description: string | null;
   order_index: number;
   is_active: boolean;
   created_at: string;

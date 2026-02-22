@@ -31,7 +31,7 @@ const categories = [
 
 export default function UslugePage() {
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 pt-24 pb-48">
       <h1 className="font-serif text-4xl font-bold text-text-dark text-center mb-4">
         Naše usluge
       </h1>
@@ -39,19 +39,33 @@ export default function UslugePage() {
         Pružamo širok spektar kozmetičkih usluga. Izaberite kategoriju za više
         detalja.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
         {categories.map((cat) => (
           <Link
             key={cat.slug}
             href={cat.href}
-            className="block p-8 bg-bg-light rounded-xl hover:bg-accent/20 transition-colors border border-accent/20"
+            className="group flex flex-col p-0 bg-white rounded-xl hover:bg-accent/20 transition-colors border border-accent/20 min-h-[260px] overflow-hidden shadow-md"
           >
-            <h2 className="font-serif text-2xl font-bold text-text-dark mb-3">
+            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-cream px-6 py-5 bg-primary">
               {cat.title}
             </h2>
-            <p className="text-text-dark/80">{cat.description}</p>
-            <span className="inline-block mt-4 text-primary font-medium">
-              Pogledaj usluge →
+            <p className="text-text-dark/80 flex-1 p-6 pt-5">
+              {cat.description}
+            </p>
+            <span className="inline-flex items-center justify-center w-10 h-10 mt-6 ml-auto mr-6 mb-6 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-cream transition-colors">
+              <svg
+                className="w-5 h-5 group-hover:translate-x-0.5 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
             </span>
           </Link>
         ))}
