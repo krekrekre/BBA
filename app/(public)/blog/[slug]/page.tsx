@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .eq("is_published", true)
     .not("published_at", "is", null)
     .lte("published_at", new Date().toISOString())
-    .single();
+    .maybeSingle();
 
   if (!post) {
     return { title: "Post nije pronađen" };
@@ -57,12 +57,16 @@ export default async function BlogPostPage({ params }: Props) {
   const protocol = headersList.get("x-forwarded-proto") || "http";
   const postUrl = `${protocol}://${host}/blog/${post.slug}`;
 
-  // Increment views (use admin client to bypass RLS)
-  const adminClient = createAdminClient();
-  await adminClient
-    .from("blog_posts")
-    .update({ views_count: (post.views_count || 0) + 1 })
-    .eq("id", post.id);
+  // Increment views (use admin client to bypass RLS) - non-blocking; page renders even if this fails
+  try {
+    const adminClient = createAdminClient();
+    await adminClient
+      .from("blog_posts")
+      .update({ views_count: (post.views_count || 0) + 1 })
+      .eq("id", post.id);
+  } catch {
+    // SUPABASE_SERVICE_ROLE_KEY may be missing on Vercel; page still renders
+  }
 
   // Related posts
   const { data: related } = await supabase
