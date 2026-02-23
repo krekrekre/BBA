@@ -65,7 +65,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ### 5. Admin login
 
 - URL: `/admin/login`
-- Default (after seed): admin@salon.com / admin123
+- Default (after seed): ad_sal , ad1-3
 
 ## Project Structure
 
